@@ -21,7 +21,7 @@ extension XCAssetsImageContents {
 
 	init(icon: FoundIconMapped) {
 		self.info = .default
-		self.images = icon.images.map {
+		self.images = icon.images.sorted(by: { $0.scale.rawValue < $1.scale.rawValue }).map {
 			XCAssetsImageContents.Image(
 				filename: $0.filename,
 				idiom: "universal",
